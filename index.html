@@ -2,11 +2,24 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8" />
-    <title>Lab Week 2</title>
+    <title>Homework 1</title>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600"
+      rel="stylesheet"
+    />
     <script src="js/index.js"></script>
   </head>
   <body>
-    <h1>Does TOEFL Score Affect Chance of Admittance to Grad School?</h1>
-    <canvas id="myCanvas" width="500" height="500"> </canvas>
+    <h1 id="title">
+      Effect of TOEFL Score on Admission Rate
+    </h1>
+    <div id="xAxislabelAndCanvasContainer">
+      <div id="yAxislabelAndCanvasContainer">
+        <p id="yAxisLabel" class="axisLabel">Chance of Admission</p>
+        <canvas id="myCanvas" width="500" height="500"> </canvas>
+      </div>
+      <p id="xAxisLabel" class="axisLabel">TOEFL Score</p>
+    </div>
   </body>
 </html>
