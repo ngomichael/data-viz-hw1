@@ -22,13 +22,6 @@
       plotCanvasPoint(data[i]);
     }
 
-    /*
-    for (let i = 0; i < 400; i++) {
-      setTimeout(() => {
-        plotCanvasPoint(data[i]);
-      }, i * 50)
-    }
-    */
     drawRegressionLine();
   }
 
@@ -75,7 +68,7 @@
   function drawAxesTicks(axesLimits) {
     // draw x-axis ticks
     let xMark = axesLimits.xMin; // start a counter with initial value xMin
-    for (let x = 100; x < 400; x += 50) {
+    for (let x = 100; x <= 400; x += 50) {
       // stop if counter is greater than x-axis max
       if (xMark > axesLimits.xMax) {
         break;
@@ -112,6 +105,7 @@
   function toCanvasPoint(point) {
     xCanvas = (point['TOEFL Score'] - 85) * 10 + 50; // scale the x point
     yCanvas = 450 - (point['Chance of Admit'] - 0.3) * 500; // scale the y point
+
     // return new x and y
     return {
       x: xCanvas,
@@ -122,13 +116,10 @@
   // plot a point at the given Canvas x and y coordinate
   function plotPoint(x, y) {
     context.beginPath();
-    //context.arc(x, y, 5, 0, 2 * Math.PI, false); old arc
-    context.arc(x, y, 3, 0, 2 * Math.PI, false); // made point area smaller
-    //context.fillStyle = 'green'; old fill fillStyle
-    context.fillStyle = 'rgb(169, 187, 208)'; // changed color to blue
+    context.arc(x, y, 3, 0, 2 * Math.PI, false);
+    context.fillStyle = 'rgb(169, 187, 208)';
     context.fill();
-    //context.lineWidth = 5; old lineWidth
-    context.lineWidth = 1; // made line width smaller
+    context.lineWidth = 1;
     context.strokeStyle = 'rgb(169, 187, 208)';
     context.stroke();
   }
@@ -155,14 +146,16 @@
 
   // Draw the regression line
   function drawRegressionLine() {
-    let startPoint = regressionLine(90); // Use 290 as line start point
-    let endPoint = regressionLine(120); // Use 340 as line end point
+    let startPoint = regressionLine(90); // Use 90 as line start point
+    let endPoint = regressionLine(120); // Use 120 as line end point
 
     // convert points to Canvas points
     startPoint = toCanvasPoint(startPoint);
     endPoint = toCanvasPoint(endPoint);
 
     // draw regression line
+    context.lineWidth = 4;
+    context.strokeStyle = 'rgb(86, 121, 163)';
     line(startPoint.x, startPoint.y, endPoint.x, endPoint.y);
   }
 
